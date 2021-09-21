@@ -2,9 +2,9 @@
 ---
 
 reduce:
-  jobkey: redu_simulated_obs
+  jobkey: redu_obs
   inputs:
-    - path: simulated_obs
+    - path: sim_obs
   pipeline:
     name: citlali
     config:

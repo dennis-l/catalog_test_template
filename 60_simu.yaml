@@ -34,7 +34,7 @@ _60_simu:
     ref_frame: altaz
 
 simu:
-  jobkey: simulated_obs
+  jobkey: sim_obs
   plot: false
   save: true
   mapping_only: false
