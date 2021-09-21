@@ -1,0 +1,78 @@
+# vim: et ts=2 sts=2 sw=2
+---
+
+_60_simu:
+  # this demonstrates the use of yaml anchors to make the config
+  # modularized
+  example_mapping_tel_nc: &example_mapping_tel_nc
+    type: lmt_tcs
+    filepath: ./tel_toltec_2020-10-01_103371_00_0000.nc
+  example_mapping_model_raster: &example_mapping_model_raster
+    type: tolteca.simu:SkyRasterScanModel
+    rot: 0. deg
+    length: 4. arcmin
+    space: 2 arcsec
+    n_scans: 120
+    speed: 40. arcsec/s
+    t_turnaround: 1 s
+    target: 92d -7d
+    t0: 2020-04-12T00:00:00
+    ref_frame: icrs
+    # lst0: ...
+  example_mapping_model_lissajous: &example_mapping_model_lissajous
+    type: tolteca.simu:SkyLissajousModel
+    rot: 30. deg
+    x_length: 4. arcmin
+    y_length: 4. arcmin
+    x_omega: 0.25 cy/s  # or 0.157 rad/s
+    y_omega: 0.3 cy/s
+    # delta: 0 deg
+    delta: 30 deg  # the phase difference
+    # target: 180d 0d
+    target: 92d -7d
+    t0: 2020-04-12T00:00:00
+    ref_frame: altaz
+
+simu:
+  jobkey: simulated_obs
+  plot: false
+  save: true
+  mapping_only: false
+  instrument:
+    name: toltec
+    calobj: cal/calobj_default/index.yaml
+    # select: 'array_name == "a1100"'
+    # select: 'pg == 1'
+    # select: 'uid == "03_0_137_0"'
+  perf_params:  # parameters for tuning the simulator performance
+    chunk_size: 45 s  # break the simulation to chunks to reduce memory usage (30.0 s)
+    mapping_interp_len: 1s  # the length detector coords get evaluated
+    erfa_interp_len: 300 s  # the length altaz-icrs get evaluated
+    anim_frame_rate: 20 Hz
+  obs_params:
+    f_smp_mapping: 122. Hz  # the sample frequency for the mapping
+    f_smp_probing: 122. Hz  # the sample frequency
+    t_exp: 1 ct    # the lenth of the exposure
+  sources:
+    - type: point_source_catalog
+      filepath: toltec_example_source.asc
+      grouping: 'array_name'
+      colname_map:
+        a1100: flux_a1100
+        a1400: flux_a1400
+        a2000: flux_a2000
+        ra: ra
+        dec: dec
+        name: name
+    - type: toltec_array_loading
+      atm_model_name: 'am_q25'  # choose from ['am_q25', 'am_q50', 'am_q75']
+    # - type: image
+    #   filepath: toltec_simfits_guter_test2.fits
+    #   grouping: 'array_name'
+    #   extname_map:
+    #       a1100: 'A1100_I'
+    #       a1400: 'A1400_I'
+    #       a2000: 'A2000_I'
+  # mapping: *example_mapping_model_raster
+  mapping: *example_mapping_model_lissajous
+  # mapping: *example_mapping_tel_nc

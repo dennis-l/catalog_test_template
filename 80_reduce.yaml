@@ -1,0 +1,51 @@
+# vim: et ts=2 sts=2 sw=2
+---
+
+reduce:
+  jobkey: redu_simulated_obs
+  inputs:
+    - path: simulated_obs
+  pipeline:
+    name: citlali
+    config:
+      runtime:
+        policy: "seq"
+        ncores: 1
+      map:
+        type: "RaDec"
+        mgrid0: 0.0
+        mgrid1: 0.0
+        pixelsize: 0.75
+        grouping: 'array_name'  # any column name in the apt.ecsv
+        offset: 0.
+        timechunk: 10.
+      tod:
+        despike:
+          enabled: false
+          sigma: 8.0
+          timeconstant: 0.015
+          despikewindow: 32
+        filter:
+          enabled: false
+          flow: 0.0
+          fhigh: 4.0
+          agibbs: 50.
+          nterms: 32
+        downsample:
+          enabled: true
+          downsamplefactor: 1
+        pcaclean:
+          enabled: false
+          neigToCut: 9
+          cutStd: 0.0
+          approximateWeights: false
+          grouping: 'array_name'
+        kernel:
+          enabled: true
+      kids:
+        fitter:
+          weight_window:
+            type: lorentz
+            fwhm_Hz: 1.5e4
+          modelspec: gainlintrend
+        solver:
