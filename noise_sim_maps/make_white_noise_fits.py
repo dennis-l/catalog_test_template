@@ -24,15 +24,15 @@ if __name__ == "__main__":
     CDELT      = pixel_size.to(u.degree).value # degree
     
     # size of the map
-    NAXIS1_length     = 5 * u.arcminute
-    NAXIS2_length     = 5 * u.arcminute
+    NAXIS1_length     = 20 * u.arcminute
+    NAXIS2_length     = 20 * u.arcminute
     NAXIS1 = int((NAXIS1_length / pixel_size).cgs.value)
     NAXIS2 = int((NAXIS2_length / pixel_size).cgs.value)
 
     # generate white noise maps
     rng = np.random.default_rng(seed)
     
-    # only put it in the 1100_I, 1400_I, 2000_U hdus
+    # only put it in the 1100_I, 1400_I, 2000_I hdus
     flux = 100 # in units MJy / sr
     imgs = 9 * [None]
     imgs[0] = rng.random([NAXIS1, NAXIS2]) * flux
