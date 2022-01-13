@@ -7,9 +7,11 @@ title: toltec information/data
 
 The following files were generated with the `am` code (available [here](https://www.cfa.harvard.edu/~spaine/am/)).
 
-- [am LMT 25](data/amLMT25.npz)
-- [am LMT 50](data/amLMT50.npz)
-- [am LMT 75](data/amLMT75.npz)
+> [`amLMT25.npz`](data/amLMT25.npz)
+>
+> [`amLMT50.npz`](data/amLMT50.npz)
+>
+> [`amLMT75.npz`](data/amLMT75.npz)
 
 ---
 
