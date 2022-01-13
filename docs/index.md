@@ -3,7 +3,7 @@ title: toltec information/data
 ---
 
 
-### Static Atmospheric Models
+## Static Atmospheric Models
 
 The following files were generated with the `am` code (available [here](https://www.cfa.harvard.edu/~spaine/am/)).
 
@@ -15,7 +15,7 @@ The following files were generated with the `am` code (available [here](https://
 
 ---
 
-### Large Millimeter Telescope Information
+## Large Millimeter Telescope Information
 
 
 ``` json
