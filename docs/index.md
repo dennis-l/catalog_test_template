@@ -1,7 +1,15 @@
 
-## toltec datastore
 
-<a href="data/amLMT25.npz">amLMT25</a>
-<a href="data/amLMT50.npz">amLMT50</a>
-<a href="data/amLMT75.npz">amLMT75</a>
+## toltec Datastore
+
+
+### `am` models
+
+The "am_q*" data were generated with the `am` code (available [here](https://www.cfa.harvard.edu/~spaine/am/)).
+
+- [am LMT 25](data/amLMT25.npz)
+- [am LMT 50](data/amLMT50.npz)
+- [am LMT 75](data/amLMT75.npz)
+
+---
 
