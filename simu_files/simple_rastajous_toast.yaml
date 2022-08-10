@@ -1,0 +1,41 @@
+simu:
+  jobkey: sim_obs_toast
+  instrument:
+    name: toltec
+    polarized: false
+  sources:
+  - type: toltec_power_loading
+    atm_model_name: toast
+
+  obs_params:
+    f_smp_mapping: 20Hz
+    f_smp_probing: 122Hz
+    t_exp: null
+  perf_params:
+    chunk_len: 10s
+    mapping_eval_interp_len: 0.05s
+
+  mapping:
+      type: rastajous
+      target: 229.24823616d 49.06812753d
+      target_frame: icrs
+      ref_frame: altaz
+      t0: '2022-05-12T06:26:57.000'
+      length: 10.0 arcmin
+      space: 1.0 arcmin
+      n_scans: '10.0'
+      rot: 0.0 deg
+      speed: 5.0 arcsec / s
+      t_turnaround: 12.0 s
+      x_length_0: 2.0 arcmin
+      y_length_0: 2.0 arcmin
+      x_omega_0: 9.2 rad / s
+      y_omega_0: 8.0 rad / s
+      delta_0: 45.0 deg
+      x_length_1: 0.5 arcmin
+      y_length_1: 0.5 arcmin
+      x_omega_1: 0.46 rad / s
+      y_omega_1: 0.4 rad / s
+      delta_1: 45.0 deg
+      delta: 0.0 deg
+
